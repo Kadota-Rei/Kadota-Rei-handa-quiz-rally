@@ -63,72 +63,35 @@
                 
                 <!-- ④ チュートリアル画面 -->
                 <section id="screen-tutorial" class="screen quiz-screen">
-                    <div class="top-hud-row">
-                        <div class="ui-badge-box">
-                            <img id="tut-badge-img" src="ui_q_badge.png" alt="" class="ui-bg-img hidden">
-                                <span class="ui-content-text">【チュートリアル】</span>
+                    <div class="quiz-layout">
+                        <div class="left-rail">
+                            <div class="mode-tag">【チュートリアル】</div>
+                            <div class="timer-vertical-wrap">
+                                <div id="tut-timer-fill" class="timer-vertical-fill"></div>
+                            </div>
                         </div>
                         
-                        <div class="ui-timer-cylinder-wrap">
-                            <img id="tut-timer-frame-img" src="ui_timer_frame.png" alt="" class="timer-frame-img hidden">
-                                <div class="timer-horiz-track">
-                                    <div id="tut-timer-fill" class="timer-horiz-fill">
-                                        <img id="tut-timer-fill-img" src="ui_timer_fill.png" alt="" class="timer-fill-img hidden">
+                        <div class="center-quiz-area">
+                            <div class="wood-question-frame">
+                                <p id="tut-question-text">練習問題：半田赤レンガは100年以上の歴史を持つ？</p>
+                            </div>
+                            
+                            <div class="choice-and-cart-row">
+                                <div class="choices-column">
+                                    <div id="tut-box-top" class="wood-choice-box" data-side="top">
+                                        <span id="tut-text-top">〇（そう！）</span>
                                     </div>
-                                    <div id="tut-timer-pivot" class="timer-pivot">
-                                        <img id="tut-timer-pivot-img" src="ui_timer_pivot.png" alt="" class="timer-pivot-img hidden">
-                                            <span class="timer-pivot-dot"></span>
-                                    </div>
-                                </div>
-                        </div>
-                        
-                        <span id="tut-timer-label" class="timer-sec-label">10.0s</span>
-                    </div>
-                    
-                    <div class="ui-question-box">
-                        <img id="tut-qframe-img" src="ui_question_frame.png" alt="" class="ui-bg-img hidden">
-                            <p id="tut-question-text" class="ui-content-text">練習問題：半田赤レンガは100年以上の歴史を持つ？</p>
-                    </div>
-                    
-                    <div class="horiz-arena-row">
-                        <!-- 左選択肢 -->
-                        <div id="tut-box-left" class="ui-choice-card left-choice" data-side="left">
-                            <img id="tut-left-frame-img" src="ui_choice_left.png" alt="" class="ui-bg-img hidden">
-                                <div class="choice-inner">
-                                    <span id="tut-text-left" class="choice-title-text">〇（そう！）</span>
-                                    <div class="circle-gauge-wrap">
-                                        <svg class="circle-gauge-svg" viewBox="0 0 72 72">
-                                            <circle class="gauge-track" cx="36" cy="36" r="29"></circle>
-                                            <circle id="tut-gauge-left" class="gauge-arc" cx="36" cy="36" r="29"></circle>
-                                        </svg>
-                                        <span id="tut-pct-left" class="gauge-pct-text">0%</span>
+                                    <div id="tut-box-bottom" class="wood-choice-box" data-side="bottom">
+                                        <span id="tut-text-bottom">×（ちがう）</span>
                                     </div>
                                 </div>
-                        </div>
-                        
-                        <!-- 中央トロッコ -->
-                        <div class="center-cart-panel">
-                            <img id="tut-cart-img" src="minecart_3.png" alt="トロッコ" class="cart-sprite">
-                                <div class="cart-emoji-fallback">🛒🍺🍺🍺</div>
-                                <div class="ui-status-box">
-                                    <img id="tut-status-img" src="ui_status_frame.png" alt="" class="ui-bg-img hidden">
-                                        <span id="tut-status-banner" class="ui-content-text">スマホを傾けて正解を選ぼうね！</span>
+                                
+                                <div class="cart-column">
+                                    <img id="tut-cart-img" src="minecart_3.png" alt="トロッコ" class="cart-sprite">
+                                        <div class="cart-emoji-fallback">🛒🍺🍺🍺</div>
+                                        <div id="tut-status-banner" class="status-ribbon">スマホを傾けて正解を選ぼうね！</div>
                                 </div>
-                        </div>
-                        
-                        <!-- 右選択肢 -->
-                        <div id="tut-box-right" class="ui-choice-card right-choice" data-side="right">
-                            <img id="tut-right-frame-img" src="ui_choice_right.png" alt="" class="ui-bg-img hidden">
-                                <div class="choice-inner">
-                                    <span id="tut-text-right" class="choice-title-text">×（ちがう）</span>
-                                    <div class="circle-gauge-wrap">
-                                        <svg class="circle-gauge-svg" viewBox="0 0 72 72">
-                                            <circle class="gauge-track" cx="36" cy="36" r="29"></circle>
-                                            <circle id="tut-gauge-right" class="gauge-arc" cx="36" cy="36" r="29"></circle>
-                                        </svg>
-                                        <span id="tut-pct-right" class="gauge-pct-text">0%</span>
-                                    </div>
-                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -146,91 +109,44 @@
                 
                 <!-- ⑤ 本番クイズ＆マップ誘導画面（全5問） -->
                 <section id="screen-play" class="screen quiz-screen">
-                    <!-- 上部：第〇問枠・横長シリンダー時間ゲージ・マップ確認ボタン -->
-                    <div class="top-hud-row">
-                        <div class="ui-badge-box">
-                            <img id="play-badge-img" src="ui_q_badge.png" alt="" class="ui-bg-img hidden">
-                                <span id="play-q-num-badge" class="ui-content-text">第1 / 5問</span>
+                    <div class="quiz-layout">
+                        <!-- 左：問題番号・縦ゲージ・マップボタン -->
+                        <div class="left-rail">
+                            <div id="play-q-num-badge" class="q-num-badge">第1 / 5問</div>
+                            <div class="timer-vertical-wrap">
+                                <div id="play-timer-fill" class="timer-vertical-fill"></div>
+                            </div>
+                            <button id="btn-open-map" class="green-action-btn" type="button">マップを確認してみよう！</button>
                         </div>
                         
-                        <div class="ui-timer-cylinder-wrap">
-                            <img id="play-timer-frame-img" src="ui_timer_frame.png" alt="" class="timer-frame-img hidden">
-                                <div class="timer-horiz-track">
-                                    <div id="play-timer-fill" class="timer-horiz-fill">
-                                        <img id="play-timer-fill-img" src="ui_timer_fill.png" alt="" class="timer-fill-img hidden">
+                        <!-- 中央：問題文・選択肢看板＋参考画像・トロッコ -->
+                        <div class="center-quiz-area">
+                            <div class="wood-question-frame">
+                                <p id="play-question-text"></p>
+                            </div>
+                            
+                            <div class="choice-and-cart-row">
+                                <div class="choices-column">
+                                    <div id="play-box-top" class="wood-choice-box" data-side="top">
+                                        <img id="play-thumb-top" class="choice-thumb hidden" alt="">
+                                            <span id="play-text-top"></span>
                                     </div>
-                                    <div id="play-timer-pivot" class="timer-pivot">
-                                        <img id="play-timer-pivot-img" src="ui_timer_pivot.png" alt="" class="timer-pivot-img hidden">
-                                            <span class="timer-pivot-dot"></span>
+                                    <div id="play-box-bottom" class="wood-choice-box" data-side="bottom">
+                                        <img id="play-thumb-bottom" class="choice-thumb hidden" alt="">
+                                            <span id="play-text-bottom"></span>
                                     </div>
                                 </div>
-                        </div>
-                        
-                        <span id="play-timer-label" class="timer-sec-label">10.0s</span>
-                        <button id="btn-open-map" class="green-action-btn top-map-btn" type="button">マップを確認してみよう！</button>
-                    </div>
-                    
-                    <!-- 問題文枠 -->
-                    <div class="ui-question-box">
-                        <img id="play-qframe-img" src="ui_question_frame.png" alt="" class="ui-bg-img hidden">
-                            <p id="play-question-text" class="ui-content-text"></p>
-                    </div>
-                    
-                    <!-- 中央：左選択肢・トロッコ・右選択肢 -->
-                    <div class="horiz-arena-row">
-                        <!-- 左選択肢 -->
-                        <div id="play-box-left" class="ui-choice-card left-choice locked-choice" data-side="left">
-                            <img id="play-left-frame-img" src="ui_choice_left.png" alt="" class="ui-bg-img hidden">
-                                <div class="choice-inner">
-                                    <img id="play-thumb-left" class="choice-thumb hidden" alt="">
-                                        <span id="play-text-left" class="choice-title-text"></span>
-                                        <div class="circle-gauge-wrap">
-                                            <svg class="circle-gauge-svg" viewBox="0 0 72 72">
-                                                <circle class="gauge-track" cx="36" cy="36" r="29"></circle>
-                                                <circle id="play-gauge-left" class="gauge-arc" cx="36" cy="36" r="29"></circle>
-                                            </svg>
-                                            <span id="play-pct-left" class="gauge-pct-text">0%</span>
-                                        </div>
+                                
+                                <div class="cart-column">
+                                    <img id="play-cart-img" src="minecart_3.png" alt="カブトビールトロッコ" class="cart-sprite">
+                                        <div id="play-cart-fallback" class="cart-emoji-fallback">🛒🍺🍺🍺</div>
+                                        <div id="play-guide-ribbon" class="status-ribbon">まずはマップを確認してみよう！</div>
                                 </div>
-                        </div>
-                        
-                        <!-- 中央トロッコ -->
-                        <div class="center-cart-panel">
-                            <img id="play-cart-img" src="minecart_3.png" alt="カブトビールトロッコ" class="cart-sprite">
-                                <div id="play-cart-fallback" class="cart-emoji-fallback">🛒🍺🍺🍺</div>
-                                <div class="ui-status-box">
-                                    <img id="play-status-img" src="ui_status_frame.png" alt="" class="ui-bg-img hidden">
-                                        <span id="play-guide-ribbon" class="ui-content-text">まずはマップを確認してみよう！</span>
-                                </div>
-                        </div>
-                        
-                        <!-- 右選択肢 -->
-                        <div id="play-box-right" class="ui-choice-card right-choice locked-choice" data-side="right">
-                            <img id="play-right-frame-img" src="ui_choice_right.png" alt="" class="ui-bg-img hidden">
-                                <div class="choice-inner">
-                                    <img id="play-thumb-right" class="choice-thumb hidden" alt="">
-                                        <span id="play-text-right" class="choice-title-text"></span>
-                                        <div class="circle-gauge-wrap">
-                                            <svg class="circle-gauge-svg" viewBox="0 0 72 72">
-                                                <circle class="gauge-track" cx="36" cy="36" r="29"></circle>
-                                                <circle id="play-gauge-right" class="gauge-arc" cx="36" cy="36" r="29"></circle>
-                                            </svg>
-                                            <span id="play-pct-right" class="gauge-pct-text">0%</span>
-                                        </div>
-                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- リトライ直後などの「スタート」待機オーバーレイ -->
-                    <div id="ready-start-overlay" class="ready-start-overlay hidden">
-                        <div class="ready-start-card">
-                            <h3 id="ready-heading">本番クイズスタート準備完了！</h3>
-                            <p id="ready-sub">ボタンを押すと問題に挑戦できます（各問マップ確認後に10秒タイマー開始）</p>
-                            <button id="btn-ready-start" class="green-action-btn ready-start-btn" type="button">スタート</button>
-                        </div>
-                    </div>
-                    
-                    <!-- マップ誘導オーバーレイ（「マップを確認してみよう！」押下時） -->
+                    <!-- マップ誘導オーバーレイ（「マップを確認してみよう！」で表示） -->
                     <div id="map-guide-overlay" class="map-guide-overlay hidden">
                         <div class="map-guide-card">
                             <div class="map-guide-left">
@@ -239,11 +155,11 @@
                                 <button id="btn-arrived-spot" class="green-action-btn arrived-big-btn" type="button">到着した！</button>
                             </div>
                             <div class="map-guide-right">
-                                <img id="map-spot-img" src="map_q1.png" alt="問題スポットマップ" class="map-spot-img">
-                                    <div id="map-fallback-box" class="map-fallback-box">
-                                        <div class="map-pin-marker">📍</div>
+                                <img id="map-spot-img" src="handa_map.png" alt="半田赤レンガ館内マップ" class="map-spot-img">
+                                    <div id="map-spot-fallback" class="map-fallback-box">
+                                        <div class="map-pin-marker" id="map-pin-marker">📍</div>
                                         <div class="map-fallback-label">半田赤レンガ建物 案内図</div>
-                                        <div id="map-fallback-spot-name" class="map-fallback-spot-name">南東側の外壁エリア</div>
+                                        <div id="map-fallback-spot-name" class="map-fallback-spot-name">南東側外壁エリア</div>
                                     </div>
                             </div>
                         </div>
@@ -297,7 +213,7 @@
                     </div>
                 </section>
                 
-                <!-- 最下部 傾き検知＆補助バー -->
+                <!-- 画面上部・下部に常時使える軽量コントロール（センサー許可・PC/手動補助） -->
                 <div id="assist-bar" class="assist-bar">
                     <span id="orientation-status" class="orient-pill">向き: 判定中</span>
                     <button id="btn-enable-tilt" class="assist-btn" type="button">傾きセンサー許可</button>
