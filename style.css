@@ -31,49 +31,6 @@ body {
     color: var(--ink);
 }
 
-/* 全画像のアスペクト比を固定して引き伸ばしを防止 */
-img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-/* ボタン押下時の「ボインっ」弾性アニメーション */
-@keyframes boingAnim {
-    0% {
-        transform: scale(1, 1);
-    }
-    25% {
-        transform: scale(1.13, 0.85);
-    }
-    50% {
-        transform: scale(0.92, 1.1);
-    }
-    75% {
-        transform: scale(1.05, 0.96);
-    }
-    100% {
-        transform: scale(1, 1);
-    }
-}
-
-.boing-playing {
-    animation: boingAnim 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
-    pointer-events: none;
-}
-
-/* マップボタン用の「ふわふわ＋少し弾む」強調アニメーション */
-@keyframes floatPulse {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
-    }
-    50% {
-        transform: translateY(-5px) scale(1.04);
-    }
-}
-
 /* 1画面フィット */
 .viewport-root {
     width: 100vw;
@@ -160,10 +117,11 @@ img {
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 4px 0 #1c1008;
-    transition: background-color 0.12s ease;
+    transition: transform 0.1s ease, background-color 0.12s ease;
 }
 
 .sketch-btn:hover { background-color: #ffbe44; }
+.sketch-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1c1008; }
 
 .title-start-btn {
     padding: clamp(8px, 1.6vh, 14px) clamp(32px, 6vw, 54px);
@@ -182,7 +140,7 @@ img {
     font-size: clamp(1.1rem, 2.6vw, 1.65rem);
 }
 
-/* ③ 操作説明画面（傾けてゲージをためるチュートリアル） */
+/* ③ 操作説明画面 */
 .howto-screen {
     background-color: var(--orange-bg);
     flex-direction: column;
@@ -206,6 +164,8 @@ img {
 }
 
 .howto-img {
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 
@@ -214,7 +174,7 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
     height: 100%;
 }
@@ -231,48 +191,45 @@ img {
 .howto-diagram {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    max-width: 720px;
-    gap: 12px;
+    gap: 16px;
 }
 
-.howto-tilt-target {
+.tilt-arrow {
+    font-size: clamp(1.6rem, 3.6vw, 2.5rem);
+    font-weight: bold;
+}
+
+.phone-mockup {
     background: var(--cream);
     border: 3px solid var(--wood-dark);
     border-radius: 12px;
-    padding: 8px 14px;
+    padding: 6px 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    min-width: 135px;
-    transition: transform 0.12s ease, border-color 0.12s ease, background-color 0.12s ease;
+    gap: 4px;
+    text-align: center;
 }
 
-.howto-tilt-target.tilt-active {
-    background-color: #fff3bf;
-    border-color: var(--green-btn);
-    transform: scale(1.04);
+.phone-q {
+    background: #ffd8a8;
+    border: 2px solid var(--wood-dark);
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
 }
 
-.howto-dir-label {
-    font-size: clamp(0.8rem, 1.8vw, 1rem);
-    font-weight: 900;
-}
-
-.howto-preview-cart {
-    font-size: clamp(1.3rem, 3.2vw, 2rem);
-    font-weight: 900;
-    background: var(--cream);
-    border: 3px solid var(--wood-dark);
-    border-radius: 12px;
-    padding: 10px 16px;
-    transition: transform 0.1s ease-out;
+.phone-opt {
+    background: #fff3bf;
+    border: 1.5px solid var(--wood-dark);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: bold;
 }
 
 .howto-sub-caption {
-    font-size: clamp(0.82rem, 1.8vw, 1.02rem);
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
     font-weight: bold;
     color: var(--wood-dark);
 }
@@ -298,23 +255,24 @@ img {
     background: var(--cream);
     border: 3px solid var(--wood-dark);
     border-radius: 8px;
-    padding: 5px 12px;
+    padding: 5px 10px;
     flex-shrink: 0;
 }
 
 #howto-rule-label {
     font-size: clamp(0.8rem, 1.8vw, 1rem);
     font-weight: 900;
+    white-space: nowrap;
 }
 
-.howto-live-gauge-pill {
-    background: #ffe8cc;
+.howto-next-btn {
+    background: var(--peach-panel);
     border: 2px solid var(--wood-dark);
-    border-radius: 999px;
-    padding: 3px 12px;
-    font-size: 0.85rem;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: clamp(0.78rem, 1.7vw, 0.95rem);
     font-weight: 900;
-    white-space: nowrap;
+    cursor: pointer;
 }
 
 /* ④ チュートリアル & ⑤ 本番クイズ画面 */
@@ -327,13 +285,13 @@ img {
     position: relative;
 }
 
-/* 上部：第〇問枠・横長シリンダーゲージ */
+/* 上部：第〇問枠・横長シリンダーゲージ・マップ確認ボタン */
 .top-hud-row {
     display: flex;
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
-    min-height: 32px;
+    min-height: 34px;
 }
 
 .ui-badge-box {
@@ -356,7 +314,7 @@ img {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     z-index: 0;
     pointer-events: none;
 }
@@ -388,7 +346,7 @@ img {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     z-index: 3;
     pointer-events: none;
 }
@@ -418,7 +376,7 @@ img {
 .timer-fill-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     display: block;
 }
 
@@ -471,12 +429,17 @@ img {
     color: #fff;
     border: 2.5px solid var(--green-btn-dark);
     border-radius: 8px;
-    padding: 6px 14px;
-    font-size: clamp(0.78rem, 1.7vw, 0.95rem);
+    padding: 5px 10px;
+    font-size: clamp(0.75rem, 1.6vw, 0.9rem);
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 3px 0 var(--green-btn-dark);
     white-space: nowrap;
+}
+
+.green-action-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--green-btn-dark);
 }
 
 /* 問題文枠 */
@@ -501,7 +464,7 @@ img {
     flex: 1;
     min-height: 0;
     display: grid;
-    grid-template-columns: 1.05fr 1.15fr 1.05fr;
+    grid-template-columns: 1fr 1.1fr 1fr;
     gap: 8px;
     align-items: stretch;
 }
@@ -511,13 +474,13 @@ img {
     background: var(--cream);
     border: 3.5px solid var(--wood-dark);
     border-radius: 12px;
-    padding: 6px 8px;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     cursor: pointer;
-    transition: border-color 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease;
+    transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
 }
 
 .ui-choice-card.locked-choice {
@@ -525,8 +488,8 @@ img {
 }
 
 .ui-choice-card.tilt-active {
+    transform: scale(1.03);
     border-color: var(--green-btn);
-    transform: scale(1.02);
     box-shadow: 0 0 0 3px rgba(37, 162, 58, 0.35);
 }
 
@@ -538,40 +501,33 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 4px;
 }
 
-/* 選択肢の参考画像・イラストを大きめに表示 */
 .choice-thumb {
-    max-width: 92%;
-    max-height: clamp(54px, 16vh, 104px);
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border: 2.5px solid var(--wood-dark);
-    border-radius: 8px;
-    background: #fff;
-    padding: 2px;
+    width: clamp(32px, 6.5vh, 52px);
+    height: clamp(32px, 6.5vh, 52px);
+    object-fit: cover;
+    border: 2px solid var(--wood-dark);
+    border-radius: 6px;
 }
 
 .choice-title-text {
-    font-size: clamp(0.82rem, 1.85vw, 1.08rem);
+    font-size: clamp(0.82rem, 1.85vw, 1.1rem);
     font-weight: 900;
-    line-height: 1.22;
+    line-height: 1.25;
     text-align: center;
 }
 
-/* 選択肢選択中のサークルゲージ */
-.circle-gauge-wrap,
-.mini-ring-box {
+/* 選択肢選択中のサークルゲージ（Cylinder風） */
+.circle-gauge-wrap {
     position: relative;
-    width: clamp(44px, 8.8vh, 62px);
-    height: clamp(44px, 8.8vh, 62px);
+    width: clamp(46px, 9.5vh, 66px);
+    height: clamp(46px, 9.5vh, 66px);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
 }
 
 .circle-gauge-svg {
@@ -581,7 +537,7 @@ img {
 }
 
 .gauge-track {
-    fill: rgba(255, 253, 247, 0.88);
+    fill: rgba(255, 253, 247, 0.85);
     stroke: #e2d3c1;
     stroke-width: 7;
 }
@@ -591,21 +547,20 @@ img {
     stroke: var(--green-btn);
     stroke-width: 7;
     stroke-linecap: round;
-    stroke-dasharray: 182.21;
+    stroke-dasharray: 182.21; /* 2 * pi * 29 */
     stroke-dashoffset: 182.21;
     transition: stroke-dashoffset 0.04s linear;
 }
 
 .gauge-pct-text {
     position: absolute;
-    font-size: clamp(0.66rem, 1.35vw, 0.8rem);
+    font-size: clamp(0.68rem, 1.4vw, 0.82rem);
     font-weight: 900;
     color: var(--wood-dark);
 }
 
-/* 中央トロッコ＋中央少し下のマップボタン */
+/* 中央トロッコ */
 .center-cart-panel {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -615,8 +570,8 @@ img {
 }
 
 .cart-sprite {
-    max-width: 96%;
-    max-height: 46%;
+    max-width: 100%;
+    max-height: 70%;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -626,7 +581,7 @@ img {
 
 .cart-emoji-fallback {
     display: none;
-    font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+    font-size: clamp(1.25rem, 3vw, 1.9rem);
     font-weight: 900;
     background: var(--cream);
     border: 3px solid var(--wood-dark);
@@ -635,53 +590,10 @@ img {
     transition: transform 0.1s ease-out;
 }
 
-/* 中央少し下に配置する目立つマップボタン */
-.map-cta-slot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2px 0;
-    z-index: 4;
-}
-
-.map-float-cta-btn {
-    position: relative;
-    background: linear-gradient(180deg, #2ec447 0%, #1e8e32 100%);
-    color: #fff;
-    border: 3px solid #12561e;
-    border-radius: 14px;
-    padding: 7px 14px;
-    font-size: clamp(0.78rem, 1.75vw, 0.98rem);
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 4px 0 #12561e, 0 0 14px rgba(255, 238, 136, 0.75);
-    animation: floatPulse 1.8s ease-in-out infinite;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-}
-
-.map-float-cta-btn.attention-dimmed {
-    animation: none;
-    opacity: 0.85;
-    box-shadow: 0 2px 0 #12561e;
-}
-
-.map-cta-badge {
-    background: #ffe066;
-    color: #23140b;
-    border: 1.5px solid #23140b;
-    border-radius: 999px;
-    padding: 1px 7px;
-    font-size: 0.7rem;
-    font-weight: 900;
-}
-
 .ui-status-box {
     position: relative;
     width: 100%;
-    min-height: 26px;
+    min-height: 28px;
     background: var(--cream);
     border: 3px solid var(--wood-dark);
     border-radius: 8px;
@@ -693,7 +605,7 @@ img {
 }
 
 .ui-status-box .ui-content-text {
-    font-size: clamp(0.72rem, 1.6vw, 0.88rem);
+    font-size: clamp(0.72rem, 1.6vw, 0.9rem);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -803,6 +715,8 @@ img {
 }
 
 .map-spot-img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -1000,7 +914,7 @@ img {
 
 .result-headline { font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 900; }
 .result-subcomment { font-size: clamp(0.8rem, 1.7vw, 1rem); font-weight: bold; color: var(--wood-dark); }
-.result-cart-img { max-height: 54%; object-fit: contain; }
+.result-cart-img { max-width: 100%; max-height: 55%; object-fit: contain; }
 
 /* 最下部 傾き検知＆補助バー */
 .assist-bar {

@@ -35,48 +35,29 @@
                     </div>
                 </section>
                 
-                <!-- ③ 操作説明画面（傾けてゲージをためて次へ進むチュートリアル） -->
+                <!-- ③ 操作説明画面 -->
                 <section id="screen-howto" class="screen howto-screen">
                     <div class="howto-main-panel">
                         <img id="img-howto" src="howto_tilt.png" alt="スマホを左右に傾けて操作する説明" class="howto-img">
                             <div id="howto-fallback" class="howto-fallback">
-                                <div class="howto-title-text">スマホを左右に傾けてゲージをためてみよう！</div>
+                                <div class="howto-title-text">スマホを左右に傾けたら選択肢が選べるよ！</div>
                                 <div class="howto-diagram">
-                                    <div id="howto-card-left" class="howto-tilt-target" data-side="left">
-                                        <div class="howto-dir-label">◀ 左に傾ける</div>
-                                        <div class="mini-ring-box">
-                                            <svg class="circle-gauge-svg" viewBox="0 0 72 72">
-                                                <circle class="gauge-track" cx="36" cy="36" r="29"></circle>
-                                                <circle id="howto-gauge-left" class="gauge-arc" cx="36" cy="36" r="29"></circle>
-                                            </svg>
-                                            <span id="howto-pct-left" class="gauge-pct-text">0%</span>
-                                        </div>
+                                    <span class="tilt-arrow">↺</span>
+                                    <div class="phone-mockup">
+                                        <div class="phone-q">問題文</div>
+                                        <div class="phone-opt">選択肢A</div>
+                                        <div class="phone-opt">選択肢B</div>
                                     </div>
-                                    
-                                    <div id="howto-preview-cart" class="howto-preview-cart">🛒🍺🍺🍺</div>
-                                    
-                                    <div id="howto-card-right" class="howto-tilt-target" data-side="right">
-                                        <div class="howto-dir-label">右に傾ける ▶</div>
-                                        <div class="mini-ring-box">
-                                            <svg class="circle-gauge-svg" viewBox="0 0 72 72">
-                                                <circle class="gauge-track" cx="36" cy="36" r="29"></circle>
-                                                <circle id="howto-gauge-right" class="gauge-arc" cx="36" cy="36" r="29"></circle>
-                                            </svg>
-                                            <span id="howto-pct-right" class="gauge-pct-text">0%</span>
-                                        </div>
-                                    </div>
+                                    <span class="tilt-arrow">↻</span>
                                 </div>
-                                <div class="howto-sub-caption">左右どちらかに傾けてゲージを100%にすると次へ進むよ！</div>
+                                <div class="howto-sub-caption">早速スマホを傾けてプレイしてみよう！</div>
                             </div>
                             <button id="btn-howto-help" class="help-circle-btn" type="button" aria-label="補足">？</button>
                     </div>
                     
                     <div class="howto-footer-bar">
-                        <span id="howto-rule-label">【操作チュートリアル】左右に傾けてゲージをためよう！</span>
-                        <div class="howto-live-gauge-pill">
-                            <span>傾きゲージ：</span>
-                            <strong id="howto-gauge-status">0%</strong>
-                        </div>
+                        <span id="howto-rule-label">【ルール説明】ルール1</span>
+                        <button id="btn-howto-next" class="howto-next-btn" type="button">傾けたら、スマホを傾けて次へ進もう！ ▶</button>
                     </div>
                 </section>
                 
@@ -165,7 +146,7 @@
                 
                 <!-- ⑤ 本番クイズ＆マップ誘導画面（全5問） -->
                 <section id="screen-play" class="screen quiz-screen">
-                    <!-- 上部：第〇問枠・横長シリンダー時間ゲージ -->
+                    <!-- 上部：第〇問枠・横長シリンダー時間ゲージ・マップ確認ボタン -->
                     <div class="top-hud-row">
                         <div class="ui-badge-box">
                             <img id="play-badge-img" src="ui_q_badge.png" alt="" class="ui-bg-img hidden">
@@ -186,6 +167,7 @@
                         </div>
                         
                         <span id="play-timer-label" class="timer-sec-label">10.0s</span>
+                        <button id="btn-open-map" class="green-action-btn top-map-btn" type="button">マップを確認してみよう！</button>
                     </div>
                     
                     <!-- 問題文枠 -->
@@ -194,7 +176,7 @@
                             <p id="play-question-text" class="ui-content-text"></p>
                     </div>
                     
-                    <!-- 中央：左選択肢・トロッコ（＋中央少し下に目立つマップボタン）・右選択肢 -->
+                    <!-- 中央：左選択肢・トロッコ・右選択肢 -->
                     <div class="horiz-arena-row">
                         <!-- 左選択肢 -->
                         <div id="play-box-left" class="ui-choice-card left-choice locked-choice" data-side="left">
@@ -212,18 +194,10 @@
                                 </div>
                         </div>
                         
-                        <!-- 中央トロッコ＋中央少し下のマップボタン -->
+                        <!-- 中央トロッコ -->
                         <div class="center-cart-panel">
                             <img id="play-cart-img" src="minecart_3.png" alt="カブトビールトロッコ" class="cart-sprite">
                                 <div id="play-cart-fallback" class="cart-emoji-fallback">🛒🍺🍺🍺</div>
-                                
-                                <div class="map-cta-slot">
-                                    <button id="btn-open-map" class="map-float-cta-btn" type="button">
-                                        <span class="map-cta-badge">まずはココ！</span>
-                                        <span>🗺️ マップを確認してみよう！</span>
-                                    </button>
-                                </div>
-                                
                                 <div class="ui-status-box">
                                     <img id="play-status-img" src="ui_status_frame.png" alt="" class="ui-bg-img hidden">
                                         <span id="play-guide-ribbon" class="ui-content-text">まずはマップを確認してみよう！</span>
@@ -251,12 +225,12 @@
                     <div id="ready-start-overlay" class="ready-start-overlay hidden">
                         <div class="ready-start-card">
                             <h3 id="ready-heading">本番クイズスタート準備完了！</h3>
-                            <p id="ready-sub">「スタート」を押すと問題が始まります（各問マップ確認後に10秒タイマー開始）</p>
+                            <p id="ready-sub">ボタンを押すと問題に挑戦できます（各問マップ確認後に10秒タイマー開始）</p>
                             <button id="btn-ready-start" class="green-action-btn ready-start-btn" type="button">スタート</button>
                         </div>
                     </div>
                     
-                    <!-- マップ誘導オーバーレイ -->
+                    <!-- マップ誘導オーバーレイ（「マップを確認してみよう！」押下時） -->
                     <div id="map-guide-overlay" class="map-guide-overlay hidden">
                         <div class="map-guide-card">
                             <div class="map-guide-left">
@@ -280,7 +254,7 @@
                         <div id="play-judge-symbol" class="judge-big-symbol">〇</div>
                     </div>
                     
-                    <!-- 解説カード -->
+                    <!-- 解説カード（1問終了後） -->
                     <div id="play-explain-overlay" class="explain-overlay hidden">
                         <div class="explain-box">
                             <div id="play-explain-badge" class="explain-badge">正解！</div>
